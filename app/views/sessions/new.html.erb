@@ -1,0 +1,15 @@
+<%= form_with url: session_path do |f| %>
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <%= f.submit "Sign In" %>
+<% end %>
+
+<%= link_to "Sign Up", new_user_path %>

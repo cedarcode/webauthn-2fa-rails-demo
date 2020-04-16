@@ -1,0 +1,18 @@
+<%= form_with model: @user do |f| %>
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username, required: true, autofocus: true %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, required: true %>
+  </div>
+
+  <%= f.submit "Sign Up" %>
+<% end %>
