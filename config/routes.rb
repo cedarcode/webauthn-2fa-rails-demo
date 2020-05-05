@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
+  resources :webauthn_credentials, only: [:new, :create] do
+    post :options, on: :collection, as: 'options_for'
+  end
 
   root to: "home#index"
 end

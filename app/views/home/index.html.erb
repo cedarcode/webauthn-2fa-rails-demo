@@ -2,6 +2,9 @@
   <p>Hello <%= current_user.username %>!</p>
 </div>
 
+<p>Please enable Two-Factor Authentication in the button below:</p>
+<%= button_to("Enable 2FA", new_webauthn_credential_path, method: :get) %>
+
 <div>
   <%= link_to("Sign Out", session_path, method: :delete) %>
 </div>

@@ -1,0 +1,11 @@
+<div data-controller="add-credential">
+  <%= form_with scope: :webauthn_credential, url: options_for_webauthn_credentials_path, data: { action: "ajax:success->add-credential#create" } do |form| %>
+    <div>
+      <%= form.text_field :nickname, placeholder: "Security Key Nickname", required: true %>
+    </div>
+
+    <div>
+      <%= form.submit "Add Security Key" %>
+    </div>
+  <% end %>
+<div>
