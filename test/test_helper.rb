@@ -14,6 +14,24 @@ class ActiveSupport::TestCase
     post session_path, params: { username: user.username, password: user.password }
   end
 
+  def create_user_with_credential(username: 'bob',
+                                  password: 'password',
+                                  credential_nickname:,
+                                  webauthn_credential:)
+    User.create!(
+      username: username,
+      password: password,
+      webauthn_credentials: [
+        WebauthnCredential.new(
+          external_id: webauthn_credential.id,
+          nickname: credential_nickname,
+          public_key: webauthn_credential.public_key,
+          sign_count: webauthn_credential.sign_count
+        )
+      ]
+    )
+  end
+
   def stub_create(fake_credentials)
     # Decode base64url encoded JSON data
     decode(fake_credentials["response"], "clientDataJSON")

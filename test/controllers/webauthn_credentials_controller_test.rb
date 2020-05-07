@@ -44,7 +44,7 @@ class WebauthnCredentialsControllerTest < ActionDispatch::IntegrationTest
 
     public_key_credential = WebAuthn::FakeClient.new(ENV["WEBAUTHN_ORIGIN"]).create(challenge: challenge)
     webauthn_credential = WebAuthn::Credential.from_create(public_key_credential)
-    create_user_with_credential(nickname: 'USB Key', webauthn_credential: webauthn_credential)
+    create_user_with_credential(credential_nickname: 'USB Key', webauthn_credential: webauthn_credential)
 
     post(
       webauthn_credentials_path,
@@ -59,20 +59,5 @@ class WebauthnCredentialsControllerTest < ActionDispatch::IntegrationTest
 
   def user
     @user ||= User.create!(username: 'alice', password: 'foo')
-  end
-
-  def create_user_with_credential(nickname:, webauthn_credential:)
-    User.create!(
-      username: 'Bob',
-      password: 'password',
-      webauthn_credentials: [
-        WebauthnCredential.new(
-          external_id: webauthn_credential.id,
-          nickname: nickname,
-          public_key: webauthn_credential.public_key,
-          sign_count: webauthn_credential.sign_count
-        )
-      ]
-    )
   end
 end
