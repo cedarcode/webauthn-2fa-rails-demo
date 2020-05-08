@@ -1,0 +1,38 @@
+require: rubocop-rails
+
+inherit_mode:
+  merge:
+    - Exclude
+
+AllCops:
+  TargetRubyVersion: 2.7
+  DisabledByDefault: true
+  Exclude:
+    - "bin/*"
+    - "config/**/*.rb"
+    - "db/schema.rb"
+    - "tmp/**/*"
+
+Bundler:
+  Enabled: true
+
+Gemspec:
+  Enabled: true
+
+Layout:
+  Enabled: true
+
+Lint:
+  Enabled: true
+
+Metrics/LineLength:
+  Max: 120
+
+Naming:
+  Enabled: true
+
+Rails:
+  Enabled: true
+
+Security:
+  Enabled: true
