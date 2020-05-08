@@ -13,4 +13,10 @@ class SessionsController < ApplicationController
       redirect_to root_path, alert: "Sign in failed. Please verify your username and password."
     end
   end
+
+  def destroy
+    sign_out
+
+    redirect_to new_session_path
+  end
 end

@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.id
   end
 
+  def sign_out
+    session[:user_id] = nil
+  end
+
   def enforce_authenticated_user
     if !current_user
       redirect_to new_session_path
