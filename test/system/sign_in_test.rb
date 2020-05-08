@@ -1,4 +1,5 @@
 require "application_system_test_case"
+require "webauthn/fake_client"
 
 class SignInTest < ApplicationSystemTestCase
   setup do
@@ -36,5 +37,34 @@ class SignInTest < ApplicationSystemTestCase
     click_on "Sign In"
 
     assert_text "Sign in failed. Please verify your username and password."
+  end
+
+  test 'sign in with 2FA enabled' do
+    raw_challenge = SecureRandom.random_bytes(32)
+    challenge = WebAuthn.configuration.encoder.encode(raw_challenge)
+    fake_client = WebAuthn::FakeClient.new(ENV['WEBAUTHN_ORIGIN'])
+    public_key_credential = fake_client.create(challenge: challenge)
+    webauthn_credential = WebAuthn::Credential.from_create(public_key_credential)
+    create_user_with_credential(username: "other",
+                                password: "password",
+                                webauthn_credential: webauthn_credential)
+
+    visit new_session_path
+
+    fill_in "Username", with: "other"
+    fill_in "Password", with: "password"
+
+    click_on "Sign In"
+    assert_button "Use Your Security Key"
+
+    fake_assertion = fake_client.get(challenge: challenge)
+    stub_get(fake_assertion)
+
+    WebAuthn::PublicKeyCredential::RequestOptions.stub_any_instance :raw_challenge, raw_challenge do
+      click_on "Use Your Security Key"
+
+      assert_text "Hello other!"
+      assert_text 'USB Key'
+    end
   end
 end

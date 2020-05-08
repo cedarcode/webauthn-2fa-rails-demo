@@ -16,8 +16,15 @@ class ActiveSupport::TestCase
 
   def create_user_with_credential(username: 'bob',
                                   password: 'password',
-                                  credential_nickname:,
-                                  webauthn_credential:)
+                                  credential_nickname: 'USB Key',
+                                  webauthn_credential: nil)
+    if webauthn_credential.blank?
+      raw_challenge = SecureRandom.random_bytes(32)
+      challenge = WebAuthn.configuration.encoder.encode(raw_challenge)
+      public_key_credential = WebAuthn::FakeClient.new(ENV["WEBAUTHN_ORIGIN"]).create(challenge: challenge)
+      webauthn_credential = WebAuthn::Credential.from_create(public_key_credential)
+    end
+
     User.create!(
       username: username,
       password: password,
@@ -51,6 +58,30 @@ class ActiveSupport::TestCase
          toUint8Array(JSON.stringify(credential['response']['clientDataJSON']));
        credential['getClientExtensionResults'] = () => ({});
        var stub = window.sinon.stub(navigator.credentials, 'create').resolves(credential);"
+    page.execute_script(script)
+  end
+
+  def stub_get(fake_assertion)
+    # Decode base64url encoded JSON data
+    decode(fake_assertion["response"], "clientDataJSON")
+
+    # Parse to avoid escaping already escaped characters
+    fake_assertion["response"]["clientDataJSON"] = JSON.parse(fake_assertion["response"]["clientDataJSON"])
+
+    fake_assertion = fake_assertion.to_json
+    script =
+      "var base64urlDecode = encodedData => atob(encodedData.replace(/_/g, '/').replace(/-/g, '+'));
+       var toUint8Array = (data) => { return Uint8Array.from(data, c => c.charCodeAt(0)) };
+       var assertion = JSON.parse('" + fake_assertion + "');
+       assertion['rawId'] = toUint8Array(base64urlDecode(assertion['rawId']));
+       assertion['response']['authenticatorData'] =
+        toUint8Array(base64urlDecode(assertion['response']['authenticatorData']));
+       assertion['response']['clientDataJSON'] =
+        toUint8Array(JSON.stringify(assertion['response']['clientDataJSON']));
+       assertion['response']['signature'] =
+        toUint8Array(base64urlDecode(assertion['response']['signature']));
+       assertion['getClientExtensionResults'] = () => ({});
+       var stub = window.sinon.stub(navigator.credentials, 'get').resolves(assertion);"
     page.execute_script(script)
   end
 
