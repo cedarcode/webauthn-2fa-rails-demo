@@ -40,4 +40,14 @@ function create(callbackUrl, credentialOptions) {
   console.log("Creating new public key credential...");
 }
 
-export { create }
+function get(credentialOptions) {
+  WebAuthnJSON.get({ "publicKey": credentialOptions }).then(function(credential) {
+    callback("/webauthn_credential_authentication", credential);
+  }).catch(function(error) {
+    console.log(error);
+  });
+
+  console.log("Getting public key credential...");
+}
+
+export { create, get }

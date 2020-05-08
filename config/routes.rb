@@ -3,7 +3,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
+
   resources :webauthn_credentials, only: [:new, :create] do
+    post :options, on: :collection, as: 'options_for'
+  end
+
+  resource :webauthn_credential_authentication, controller: 'webauthn_credential_authentication', only: [:new, :create] do
     post :options, on: :collection, as: 'options_for'
   end
 

@@ -29,12 +29,14 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     user = create_user_with_credential(credential_nickname: 'USB Key', webauthn_credential: webauthn_credential)
     login_as(user)
 
-    get root_path
+    ApplicationController.stub_any_instance(:user_authenticated?, true) do
+      get root_path
 
-    assert_response :success
-    assert_match 'Your security key:', response.body
-    assert_match 'USB Key', response.body
-    assert_match webauthn_credential.id, response.body
+      assert_response :success
+      assert_match 'Your security key:', response.body
+      assert_match 'USB Key', response.body
+      assert_match webauthn_credential.id, response.body
+    end
   end
 
   private
