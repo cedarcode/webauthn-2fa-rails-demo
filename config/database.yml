@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: webauthn_2fa_rails_demo_production
-  username: webauthn_2fa_rails_demo
-  password: <%= ENV['WEBAUTHN_2FA_RAILS_DEMO_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
