@@ -38,8 +38,6 @@ class WebauthnCredentialsController < ApplicationController
       )
 
       if credential.save
-        session[:user_authenticated] = true
-
         render json: { status: "ok" }, status: :ok
       else
         render json: "Couldn't add your Security Key", status: :unprocessable_entity

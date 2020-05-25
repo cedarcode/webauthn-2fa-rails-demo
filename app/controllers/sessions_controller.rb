@@ -6,9 +6,15 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:username])
 
     if user && user.authenticate(params[:password])
-      sign_in(user)
+      if user.second_factor_enabled?
+        session[:webauthn_user_id] = user.id
 
-      redirect_to root_path
+        redirect_to new_webauthn_credential_authentication_path
+      else
+        sign_in(user)
+
+        redirect_to root_path
+      end
     else
       redirect_to root_path, alert: "Sign in failed. Please verify your username and password."
     end
