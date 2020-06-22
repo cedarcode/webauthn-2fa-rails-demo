@@ -2,9 +2,11 @@
   "name": "webauthn_2fa_rails_demo",
   "private": true,
   "dependencies": {
+    "@github/webauthn-json": "^0.4.1",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.4.1",
+    "sinon": "^9.0.2",
     "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0"
   },

@@ -12,10 +12,12 @@ gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
+gem 'webauthn', '~> 2.2'
 gem 'webpacker', '~> 4.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'dotenv-rails', '~> 2.7'
 end
 
 group :development do
@@ -29,6 +31,7 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
+  gem 'minitest-stub_any_instance', '~> 1.0'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end

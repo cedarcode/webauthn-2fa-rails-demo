@@ -1,0 +1,8 @@
+<div>
+  <p>When you are ready to authenticate, press the button below.</p>
+</div>
+<div data-controller="credential-authenticator">
+  <%= form_with scope: :webauthn_credential_authentication, url: options_for_webauthn_credential_authentication_path, data: { action: "ajax:success->credential-authenticator#verifyKey" } do |form| %>
+    <%= form.submit "Use Your Security Key" %>
+  <% end %>
+</div>
