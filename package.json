@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@github/webauthn-json": "^0.4.1",
+    "@material/top-app-bar": "4.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.4.1",

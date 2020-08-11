@@ -8,12 +8,30 @@
     <meta name="viewport" content="width=device-width">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render "flash" %>
+   <header class="mdc-top-app-bar">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <span class="mdc-top-app-bar__title">WebAuthn 2FA Rails Demo</span>
+      </section>
+    </div>
+   </header>
 
-    <%= yield %>
+   <div class="content mdc-top-app-bar--fixed-adjust">
+     <div class="page-content mdc-top-app-bar--fixed-adjust">
+       <%= render "flash" %>
+
+       <%= yield %>
+     </div>
+   </div>
+
+   <footer class="footer">
+     <span>Built by</span>
+     <%= link_to "Cedarcode", "https://cedarcode.com", class: "no-text-decoration" %>
+   </footer>
   </body>
 </html>
