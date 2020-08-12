@@ -80,7 +80,7 @@ body {
   margin-right: auto;
 }
 
-.login-form, .registration-form {
+.login-form, .registration-form, .credential-authentication-form {
   display: flex;
   flex-direction: column;
 }
@@ -95,6 +95,10 @@ body {
 .login-form__login_button, .registration-form__register_button {
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+.credential-authentication-form__helper_text {
+  margin-top: 10px;
 }
 
 a.no-text-decoration {
