@@ -862,7 +862,7 @@
     "@material/typography" "^4.0.0"
     tslib "^1.9.3"
 
-"@material/icon-button@^4.0.0":
+"@material/icon-button@4.0.0", "@material/icon-button@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@material/icon-button/-/icon-button-4.0.0.tgz#f7293462f1b4967712f9b8755b87c2228dcccc3d"
   integrity sha512-b1SyWtr2cwlKgIVo+irxRgW0lpIzauADLAxQEJ8/RTO9qVFviohJUnS+5QQCkC5zex5Q52OmQ+aNl0KRjkUdvQ==
@@ -881,6 +881,50 @@
     "@material/animation" "^4.0.0"
     "@material/base" "^4.0.0"
     "@material/theme" "^4.0.0"
+    tslib "^1.9.3"
+
+"@material/list@4.0.0", "@material/list@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@material/list/-/list-4.0.0.tgz#206e13920d070c2f538027e0b4905bc2b903e64d"
+  integrity sha512-ximtqMQzi+bnnFy1jrdzMUH7jq169XVexCykumxoLI1PbVx4imQ0G3R6LIfJiafbxbBYawfwySZfMXTJkDML7g==
+  dependencies:
+    "@material/base" "^4.0.0"
+    "@material/density" "^4.0.0"
+    "@material/dom" "^4.0.0"
+    "@material/feature-targeting" "^4.0.0"
+    "@material/ripple" "^4.0.0"
+    "@material/rtl" "^4.0.0"
+    "@material/shape" "^4.0.0"
+    "@material/theme" "^4.0.0"
+    "@material/typography" "^4.0.0"
+    tslib "^1.9.3"
+
+"@material/menu-surface@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@material/menu-surface/-/menu-surface-4.0.0.tgz#6de670bfbc5d0075f26baf58e46d00a91854131f"
+  integrity sha512-rEsJMJKL3zr8sytH6M25c989vy2HrIndBCbHs51PYYNzMDYbdEyf//UC/ZnoT4fu/Pq5E90+YcLZDpifES3axA==
+  dependencies:
+    "@material/animation" "^4.0.0"
+    "@material/base" "^4.0.0"
+    "@material/elevation" "^4.0.0"
+    "@material/feature-targeting" "^4.0.0"
+    "@material/rtl" "^4.0.0"
+    "@material/shape" "^4.0.0"
+    "@material/theme" "^4.0.0"
+    tslib "^1.9.3"
+
+"@material/menu@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@material/menu/-/menu-4.0.0.tgz#febe9194892daea9dd2504a2a38bafc5c76864c1"
+  integrity sha512-jI8ImB/TXWUi8V0ymdmnnnrJOrJ8oTFcBI1VZ0FcL/5/pMvSeTGjxbJs44/5ZxSbaIAPr2r5K5/r9ZRZPdbNWA==
+  dependencies:
+    "@material/base" "^4.0.0"
+    "@material/dom" "^4.0.0"
+    "@material/feature-targeting" "^4.0.0"
+    "@material/list" "^4.0.0"
+    "@material/menu-surface" "^4.0.0"
+    "@material/ripple" "^4.0.0"
+    "@material/rtl" "^4.0.0"
     tslib "^1.9.3"
 
 "@material/notched-outline@^4.0.0":

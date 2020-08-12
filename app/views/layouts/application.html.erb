@@ -9,6 +9,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -18,6 +19,32 @@
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
         <span class="mdc-top-app-bar__title">WebAuthn 2FA Rails Demo</span>
       </section>
+
+      <% if current_user %>
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+
+          <div class="mdc-menu-surface--anchor" data-controller="menu">
+            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" data-action="menu#open">account_circle</button>
+
+            <div class="mdc-menu mdc-menu-surface" tabindex="-1" data-target="menu.openable">
+              <div class="mdc-list">
+                <div class="mdc-list-item">
+                  <span class="mdc-list-item__text">
+                    <%= current_user.username %>
+                  </span>
+                </div>
+
+                <div role="separator" class="mdc-list-divider"></div>
+
+                <%= link_to session_path, class: "mdc-list-item", method: :delete do %>
+                  <span class="mdc-list-item__graphic material-icons">launch</span>
+                  <span class="mdc-list-item__text">Sign out</span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </section>
+      <% end %>
     </div>
    </header>
 

@@ -17,6 +17,10 @@
 @import "bootstrap/dist/css/bootstrap-reboot";
 @import "@material/button/mdc-button";
 @import "@material/card/mdc-card";
+@import "@material/icon-button/mdc-icon-button";
+@import "@material/list/mdc-list";
+@import "@material/menu-surface/mdc-menu-surface";
+@import "@material/menu/mdc-menu";
 @import "@material/textfield/mdc-text-field";
 @import "@material/top-app-bar/mdc-top-app-bar";
 @import "@material/typography/mdc-typography";
@@ -98,6 +102,19 @@ body {
 }
 
 .credential-authentication-form__helper_text {
+  margin-top: 10px;
+}
+
+.homepage-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.homepage-grid--second-factor-disabled {
+  margin-top: 10px;
+}
+
+.credentials-list__new-credential-button {
   margin-top: 10px;
 }
 
