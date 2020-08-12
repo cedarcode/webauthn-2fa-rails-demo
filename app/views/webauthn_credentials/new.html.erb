@@ -1,11 +1,21 @@
-<div data-controller="add-credential">
-  <%= form_with scope: :webauthn_credential, url: options_for_webauthn_credentials_path, data: { action: "ajax:success->add-credential#create" } do |form| %>
-    <div>
-      <%= form.text_field :nickname, placeholder: "Security Key Nickname", required: true %>
+<div class="new-credential-page-grid">
+  <h3 class="mdc-typography--subtitle1 center">Add a security key:</h3>
+  <%= form_with scope: :webauthn_credential,
+                url: options_for_webauthn_credentials_path,
+                class: "new-credential-form",
+                data: { controller: "add-credential", action: "ajax:success->add-credential#create" } do |form| %>
+
+    <div class="mdc-text-field mdc-text-field--fullwidth" data-controller="textfield">
+      <%= form.text_field :nickname, class: "mdc-text-field__input", placeholder: "New Security Key nickname", required: true %>
+      <div class="mdc-line-ripple"></div>
     </div>
 
-    <div>
-      <%= form.submit "Add Security Key" %>
+    <div class="new-credential-form__submit-button center">
+      <%= form.submit "Add Security Key", class: "mdc-button mdc-button--raised" %>
+    </div>
+
+    <div class="new-credential-form__helper_text center">
+      <span class="mdc-typography--body2">If it's an USB key be sure to insert it and, if necessary, tap it.</span>
     </div>
   <% end %>
-<div>
+</div>

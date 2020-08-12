@@ -84,7 +84,7 @@ body {
   margin-right: auto;
 }
 
-.login-form, .registration-form, .credential-authentication-form {
+.login-form, .registration-form, .credential-authentication-form, .new-credential-form {
   display: flex;
   flex-direction: column;
 }
@@ -101,7 +101,11 @@ body {
   margin-bottom: 5px;
 }
 
-.credential-authentication-form__helper_text {
+.new-credential-form__submit-button {
+  margin-top: 10px;
+}
+
+.credential-authentication-form__helper_text, .new-credential-form__helper_text {
   margin-top: 10px;
 }
 
@@ -115,6 +119,12 @@ body {
 }
 
 .credentials-list__new-credential-button {
+  margin-top: 10px;
+}
+
+.new-credential-page-grid {
+  display: flex;
+  flex-direction: column;
   margin-top: 10px;
 }
 
