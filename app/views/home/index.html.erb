@@ -1,20 +1,35 @@
-<div>
-  <p>Hello <%= current_user.username %>!</p>
-</div>
+<% if current_user.second_factor_enabled? %>
+  <div class="homepage-grid mdc-list-group">
+    <h3 class="mdc-list-group__subheader">Your Security Keys:</h3>
+    <ul class="credentials-list mdc-list mdc-list--two-line">
+      <% current_user.webauthn_credentials.each do |credential| %>
+        <li class="mdc-list-item">
+          <span class="mdc-list-item__graphic material-icons">vpn_key</span>
 
-<div>
-  <% if current_user.second_factor_enabled? %>
-    <p>Your security key:</p>
-    <li>
-      <%= credential.nickname %><br>
-      <%= credential.external_id %>
-    </li>
-  <% else %>
-    <p>Please enable Two-Factor Authentication in the button below:</p>
-    <%= button_to("Enable 2FA", new_webauthn_credential_path, method: :get) %>
-  <% end %>
-</div>
+          <span class="mdc-list-item__text">
+            <span class="mdc-list-item__primary-text">
+              <%= credential.nickname %>
+            </span>
 
-<div>
-  <%= link_to("Sign Out", session_path, method: :delete) %>
-</div>
+            <span class="mdc-list-item__secondary-text">
+              <%= "Registered on #{credential.created_at.strftime('%B %d, %Y')}" %>
+            </span>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+    <div class="credentials-list__new-credential-button center">
+      <%= button_to("Register new Security Key",
+                    new_webauthn_credential_path,
+                    method: :get,
+                    class: "mdc-button mdc-button--raised") %>
+    </div>
+  </div>
+<% else %>
+  <div class="homepage-grid homepage-grid--second-factor-disabled">
+    <h3 class="mdc-typography--subtitle1">Please enable Two-Factor Authentication in the button below:</h3>
+    <div class="center">
+      <%= button_to("Enable 2FA", new_webauthn_credential_path, method: :get, class: "mdc-button mdc-button--raised") %>
+    </div>
+  </div>
+<% end %>
