@@ -55,6 +55,12 @@ class WebauthnCredentialsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Couldn't add your Security Key", response.body
   end
 
+  test 'destroy should require authentication' do
+    post webauthn_credentials_path, params: { id: '1' }
+
+    assert_redirected_to new_session_path
+  end
+
   private
 
   def user

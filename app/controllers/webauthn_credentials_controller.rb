@@ -46,4 +46,10 @@ class WebauthnCredentialsController < ApplicationController
       render json: "Verification failed: #{e.message}", status: :unprocessable_entity
     end
   end
+
+  def destroy
+    current_user.credentials.destroy(params[:id])
+
+    redirect_to root_path
+  end
 end
