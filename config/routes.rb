@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
 
-  resources :webauthn_credentials, only: [:new, :create] do
+  resources :webauthn_credentials, only: [:new, :create, :destroy] do
     post :options, on: :collection, as: 'options_for'
   end
 
