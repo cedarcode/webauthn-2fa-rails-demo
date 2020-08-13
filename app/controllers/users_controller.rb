@@ -12,9 +12,9 @@ class UsersController < ApplicationController
       )
 
     if user.save
-      redirect_to root_path, notice: "Signed up successfully"
+      redirect_to root_path, notice: "Signed up successfully. Please log in to continue."
     else
-      redirect_to root_path, alert: "Sign up failed"
+      redirect_to new_user_path, alert: user.errors.full_messages.join('. ')
     end
   end
 

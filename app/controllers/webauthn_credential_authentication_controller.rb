@@ -45,13 +45,13 @@ class WebauthnCredentialAuthenticationController < ApplicationController
 
   def ensure_login_initiated
     if session[:webauthn_user_id].blank?
-      redirect_to new_session_path, alert: "Login was not initiated"
+      redirect_to new_session_path
     end
   end
 
   def ensure_user_not_authenticated
     if current_user
-      redirect_to root_path, alert: "User's already authenticated"
+      redirect_to root_path
     end
   end
 end
