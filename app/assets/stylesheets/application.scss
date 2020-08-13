@@ -14,6 +14,10 @@
  *= require_self
  */
 
+$mdc-theme-primary: #C0392B;
+$mdc-theme-secondary: #F5F5F6;
+$mdc-theme-background: #E1E2E1;
+
 @import "bootstrap/dist/css/bootstrap-reboot";
 @import "@material/button/mdc-button";
 @import "@material/card/mdc-card";
@@ -22,6 +26,7 @@
 @import "@material/menu-surface/mdc-menu-surface";
 @import "@material/menu/mdc-menu";
 @import "@material/textfield/mdc-text-field";
+@import "@material/theme/mdc-theme";
 @import "@material/top-app-bar/mdc-top-app-bar";
 @import "@material/typography/mdc-typography";
 
