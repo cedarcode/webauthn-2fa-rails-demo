@@ -25,7 +25,7 @@ class UsersTest < ApplicationSystemTestCase
     assert_no_difference("User.count") do
       click_on "Sign Up"
 
-      assert_text "Sign up failed"
+      assert_text "Password confirmation does not match"
     end
   end
 end

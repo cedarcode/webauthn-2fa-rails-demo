@@ -155,3 +155,24 @@ body {
 a.no-text-decoration {
   text-decoration: none;
 }
+
+.alert {
+  display: flex;
+  margin-top: 5px;
+  padding: .75rem 1.25rem;
+  FONT-WEIGHT: 100;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert--success {
+  color: #155724;
+  background-color: #D4EDDA;
+  border-color: #C3E6CB;
+}
+
+.alert--error {
+  color: #721C24;
+  background-color: #F8D7DA;
+  border-color: #F5C6CB;
+}
