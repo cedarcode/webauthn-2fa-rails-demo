@@ -55,13 +55,13 @@ class SignInTest < ApplicationSystemTestCase
     fill_in "Password", with: "password"
 
     click_on "Sign In"
-    assert_button "Use Your Security Key"
+    assert_button "Use Security Key"
 
     fake_assertion = fake_client.get(challenge: challenge)
     stub_get(fake_assertion)
 
     WebAuthn::PublicKeyCredential::RequestOptions.stub_any_instance :raw_challenge, raw_challenge do
-      click_on "Use Your Security Key"
+      click_on "Use Security Key"
 
       assert_text "Hello other!"
       assert_text 'USB Key'
