@@ -18,7 +18,7 @@ class AddCredentialTest < ApplicationSystemTestCase
 
     click_on "Sign In"
 
-    assert_text "Hello me!"
+    assert_text "Please enable Two-Factor Authentication in the button below:"
 
     visit new_webauthn_credential_path
 
@@ -30,7 +30,7 @@ class AddCredentialTest < ApplicationSystemTestCase
     WebAuthn::PublicKeyCredential::CreationOptions.stub_any_instance :raw_challenge, raw_challenge do
       click_on "Add Security Key"
 
-      assert_text "Hello me!"
+      assert_text "Your Security Keys:"
       assert_text 'USB Key'
     end
   end

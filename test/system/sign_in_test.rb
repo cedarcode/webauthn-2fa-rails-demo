@@ -14,7 +14,7 @@ class SignInTest < ApplicationSystemTestCase
 
     click_on "Sign In"
 
-    assert_text "Hello me!"
+    assert_text "Please enable Two-Factor Authentication in the button below:"
   end
 
   test "signing in fails with wrong username" do
@@ -63,7 +63,7 @@ class SignInTest < ApplicationSystemTestCase
     WebAuthn::PublicKeyCredential::RequestOptions.stub_any_instance :raw_challenge, raw_challenge do
       click_on "Use Security Key"
 
-      assert_text "Hello other!"
+      assert_text "Your Security Keys:"
       assert_text 'USB Key'
     end
   end
