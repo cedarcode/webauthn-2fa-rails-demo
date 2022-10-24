@@ -12,6 +12,8 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   def login_as(user)
     post session_path, params: { username: user.username, password: user.password }
+
+    user
   end
 
   def create_user_with_credential(username: 'bob',
