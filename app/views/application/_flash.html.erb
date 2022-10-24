@@ -1,11 +1,5 @@
-<% if flash[:notice].present? %>
-  <div>
-    <%= flash[:notice] %>
-  </div>
-<% end %>
-
-<% if flash[:alert].present? %>
-  <div>
-    <%= flash[:alert] %>
+<% flash.each do |type, msg| %>
+  <div class="alert <%= flash_class_for(type) %>">
+    <span class="center"><%= msg %></span>
   </div>
 <% end %>

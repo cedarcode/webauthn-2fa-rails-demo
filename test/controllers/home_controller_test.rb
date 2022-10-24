@@ -35,9 +35,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get root_path
 
     assert_response :success
-    assert_match 'Your security key:', response.body
+    assert_match 'Your Security Keys:', response.body
     assert_match 'USB Key', response.body
-    assert_match webauthn_credential.id, response.body
   end
 
   private
