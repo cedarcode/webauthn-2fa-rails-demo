@@ -1,24 +1,3 @@
-# README
+# WebAuthn 2FA Rails Demo App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Application demonstrating a login using [WebAuthn](https://en.wikipedia.org/wiki/WebAuthn) as second authentication factor built with Ruby on Rails + [webauthn](https://github.com/cedarcode/webauthn-ruby) ruby gem.
