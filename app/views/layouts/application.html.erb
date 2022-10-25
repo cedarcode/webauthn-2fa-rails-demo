@@ -2,10 +2,22 @@
 <html>
   <head>
     <title>WebAuthn 2FA Rails Demo</title>
+    <meta name="description" content="A demo of a login with WebAuthn as second factor authentication using Rails and webauthn ruby gem.">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <meta name="viewport" content="width=device-width">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@cedarcode">
+    <meta property="og:title" content="WebAuthn 2FA Rails demo"/>
+    <meta property="og:description" content="A demo of a login with WebAuthn as second factor authentication using Rails and webauthn ruby gem."/>
+    <meta property="og:site_name" content="WebAuthn 2FA Rails demo">
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://webauthn-2fa.cedarcode.com"/>
+    <meta property="og:image" content="<%= image_url('webauthn-ruby.png') %>">
+    <meta property="og:image:width" content="600">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" %>
