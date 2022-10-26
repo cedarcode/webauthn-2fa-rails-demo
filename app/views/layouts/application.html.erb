@@ -75,7 +75,14 @@
 
    <footer class="footer mdc-theme--secondary-bg mdc-theme--text-primary-on-light">
      <span class="mdc-theme--text-secondary-on-light">Built by</span>
-     <%= link_to "Cedarcode", "https://cedarcode.com", class: "mdc-theme--text-primary-on-light no-text-decoration" %>
+     <%=
+       link_to(
+         "Cedarcode",
+         "https://cedarcode.com",
+         class: "mdc-theme--text-primary-on-light no-text-decoration",
+         target: :blank,
+       )
+     %>
    </footer>
   </body>
 </html>
