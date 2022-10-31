@@ -47,4 +47,4 @@ jobs:
         RAILS_ENV: test
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
-      run: bundle exec rails test
+      run: bundle exec rake
