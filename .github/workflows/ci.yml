@@ -47,4 +47,6 @@ jobs:
         RAILS_ENV: test
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
-      run: bundle exec rake
+      run: |
+        bundle exec rake
+        TEST_BROWSER=headless_chrome bundle exec rake test:system
