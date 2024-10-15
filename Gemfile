@@ -19,10 +19,10 @@ gem 'webauthn', '~> 2.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'dotenv-rails', '~> 2.7'
 end
 
 group :development do
+  gem "kamal", '~> 2.2'
   gem "rubocop", "~> 1.67"
   gem "rubocop-rails", "~> 2.26"
   gem 'web-console', '>= 3.3.0'
