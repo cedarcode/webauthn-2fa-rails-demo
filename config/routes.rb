@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     post :options, on: :collection, as: 'options_for'
   end
 
+  get "up" => "rails/health#show", as: :rails_health_check
+
   root to: "home#index"
 end
