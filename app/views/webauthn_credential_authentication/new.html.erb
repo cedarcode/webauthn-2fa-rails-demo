@@ -6,6 +6,7 @@
     <div class="app-card__secondary mdc-typography--body2">
       <%= form_with scope: :webauthn_credential_authentication,
         url: options_for_webauthn_credential_authentication_path,
+        local: false,
         class: "credential-authentication-form",
         data: { controller: "credential-authenticator", action: "ajax:success->credential-authenticator#verifyKey" } do |form| %>
 

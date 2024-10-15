@@ -1,6 +1,7 @@
 <div class="new-credential-page-grid">
   <h3 class="mdc-typography--subtitle1 center">Add a security key:</h3>
   <%= form_with scope: :webauthn_credential,
+                local: false,
                 url: options_for_webauthn_credentials_path,
                 class: "new-credential-form",
                 data: { controller: "add-credential", action: "ajax:success->add-credential#create" } do |form| %>
