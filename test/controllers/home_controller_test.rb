@@ -18,7 +18,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_match 'Please enable Two-Factor Authentication in the button below:', response.body
-    assert_select 'input[type="submit"][value="Enable 2FA"]'
+    assert_select 'button[type="submit"]', text: "Enable 2FA"
   end
 
   test "home should list user's security keys if present" do
