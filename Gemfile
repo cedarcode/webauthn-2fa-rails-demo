@@ -14,7 +14,6 @@ gem 'puma', '~> 4.1'
 gem 'rollbar', '~>3.6'
 gem 'sass-rails', '>= 6'
 gem 'stimulus-rails'
-gem 'turbolinks', '~> 5'
 gem 'webauthn', '~> 2.2'
 
 group :development, :test do

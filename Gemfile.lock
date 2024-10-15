@@ -265,9 +265,6 @@ GEM
       bindata (~> 2.4)
       openssl (> 2.0, < 3.1)
       openssl-signature_algorithm (~> 1.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.7.0)
@@ -316,7 +313,6 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   stimulus-rails
-  turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
   webauthn (~> 2.2)
