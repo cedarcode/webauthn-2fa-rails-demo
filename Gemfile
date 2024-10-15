@@ -13,6 +13,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rollbar', '~>3.6'
 gem 'sassc-rails', '~> 2.0'
+gem 'sprockets-rails', '~> 3.5'
 gem 'stimulus-rails'
 gem 'webauthn', '~> 2.2'
 
