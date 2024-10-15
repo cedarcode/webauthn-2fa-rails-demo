@@ -83,6 +83,4 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-
-  config.middleware.use(Rack::HostRedirect, "webauthn-2fa.herokuapp.com" => URI(ENV["WEBAUTHN_ORIGIN"]).host)
 end
