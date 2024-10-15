@@ -19,6 +19,7 @@ gem 'webauthn', '~> 2.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'dotenv-rails', '~> 3.1'
 end
 
 group :development do
