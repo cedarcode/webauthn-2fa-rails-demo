@@ -26,15 +26,6 @@ jobs:
       with:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16.x'
-        cache: yarn
-
-    - name: Install packages
-      run: yarn install --pure-lockfile --prefer-offline
-
     - name: Setup test database
       env:
         RAILS_ENV: test
