@@ -10,14 +10,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:12
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-        ports: ['5432:5432']
-
     steps:
     - uses: actions/checkout@v3
 
@@ -25,13 +17,6 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-
-    - name: Setup test database
-      env:
-        RAILS_ENV: test
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-      run: bundle exec rails db:setup
 
     - name: Run tests
       env:
