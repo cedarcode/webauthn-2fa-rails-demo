@@ -19,10 +19,12 @@
     <meta property="og:image" content="<%= image_url('webauthn-ruby.png') %>">
     <meta property="og:image:width" content="600">
 
+    <%= stylesheet_link_tag 'https://unpkg.com/material-components-web@4.0.0/dist/material-components-web.min.css' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_importmap_tags %>
   </head>
 
   <body class="mdc-theme--background mdc-typography">
@@ -41,7 +43,7 @@
           <div class="mdc-menu-surface--anchor" data-controller="menu">
             <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" data-action="menu#open">account_circle</button>
 
-            <div class="mdc-menu mdc-menu-surface" tabindex="-1" data-target="menu.openable">
+            <div class="mdc-menu mdc-menu-surface" tabindex="-1" data-menu-target="openable">
               <div class="mdc-list">
                 <div class="mdc-list-item">
                   <span class="mdc-list-item__text">
