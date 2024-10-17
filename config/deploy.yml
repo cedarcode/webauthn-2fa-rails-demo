@@ -1,0 +1,36 @@
+service: webauthn-2fa-rails-demo
+
+image:  webauthn-2fa-rails-demo
+
+servers:
+  web:
+    hosts:
+      - 3.233.189.168
+    options:
+      memory: 200MiB
+
+proxy:
+  host: webauthn-2fa.cedarcode.com
+  ssl: true
+  app_port: 3000
+
+registry:
+  server: 864100757851.dkr.ecr.us-east-1.amazonaws.com
+  username: AWS
+  password: <%= %x(aws ecr get-login-password) %>
+
+builder:
+  arch: amd64
+  cache:
+    type: gha
+
+env:
+  clear:
+    WEBAUTHN_ORIGIN: https://webauthn-2fa.cedarcode.com
+  secret:
+    - ROLLBAR_POST_CLIENT_ITEM_ACCESS_TOKEN
+    - ROLLBAR_POST_SERVER_ITEM_ACCESS_TOKEN
+    - SECRET_KEY_BASE
+
+ssh:
+  user: ubuntu
