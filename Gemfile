@@ -9,7 +9,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'importmap-rails'
 gem 'jbuilder', '~> 2.7'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 6.4'
 gem 'rollbar', '~> 3.6'
 gem 'sassc-rails', '~> 2.0'
 gem 'sprockets-rails', '~> 3.5'
