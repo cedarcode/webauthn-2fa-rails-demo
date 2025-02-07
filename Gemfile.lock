@@ -192,7 +192,7 @@ GEM
       date
       stringio
     public_suffix (6.0.1)
-    puma (4.3.12)
+    puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.10)
@@ -342,7 +342,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   kamal (~> 2.2)
   minitest-stub_any_instance (~> 1.0)
-  puma (~> 4.1)
+  puma (~> 6.6)
   rails (~> 7.2.1)
   rollbar (~> 3.6)
   rubocop (~> 1.67)
