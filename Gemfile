@@ -15,7 +15,7 @@ gem 'sassc-rails', '~> 2.0'
 gem 'sprockets-rails', '~> 3.5'
 gem 'sqlite3', '>= 1.4'
 gem 'stimulus-rails'
-gem 'webauthn', '~> 2.2'
+gem 'webauthn', '~> 3.3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
