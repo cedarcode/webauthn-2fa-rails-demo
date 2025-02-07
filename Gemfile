@@ -9,13 +9,13 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'importmap-rails'
 gem 'jbuilder', '~> 2.7'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 6.6'
 gem 'rollbar', '~> 3.6'
 gem 'sassc-rails', '~> 2.0'
 gem 'sprockets-rails', '~> 3.5'
 gem 'sqlite3', '>= 1.4'
 gem 'stimulus-rails'
-gem 'webauthn', '~> 2.2'
+gem 'webauthn', '~> 3.3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
