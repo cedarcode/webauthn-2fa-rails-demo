@@ -131,7 +131,7 @@ GEM
     json (2.10.1)
     jwt (2.10.1)
       base64
-    kamal (2.5.2)
+    kamal (2.5.3)
       activesupport (>= 7.0)
       base64 (~> 0.2)
       bcrypt_pbkdf (~> 1.0)
@@ -196,7 +196,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.10)
+    rack (3.1.11)
     rack-session (2.1.0)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -242,7 +242,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.4.1)
     rollbar (3.6.1)
-    rubocop (1.72.2)
+    rubocop (1.73.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -253,9 +253,9 @@ GEM
       rubocop-ast (>= 1.38.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.38.0)
+    rubocop-ast (1.38.1)
       parser (>= 3.3.1.0)
-    rubocop-rails (2.30.2)
+    rubocop-rails (2.30.3)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -289,8 +289,9 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (2.6.0)
       mini_portile2 (~> 2.8.0)
-    sshkit (1.23.2)
+    sshkit (1.24.0)
       base64
+      logger
       net-scp (>= 1.1.2)
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
@@ -331,7 +332,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.7.1)
+    zeitwerk (2.7.2)
 
 PLATFORMS
   ruby
@@ -344,12 +345,12 @@ DEPENDENCIES
   dotenv-rails (~> 3.1)
   importmap-rails
   jbuilder (~> 2.7)
-  kamal (~> 2.2)
+  kamal (~> 2.5)
   minitest-stub_any_instance (~> 1.0)
   puma (~> 6.6)
   rails (~> 7.2.1)
   rollbar (~> 3.6)
-  rubocop (~> 1.72)
+  rubocop (~> 1.73)
   rubocop-rails (~> 2.30)
   sassc-rails (~> 2.0)
   selenium-webdriver
