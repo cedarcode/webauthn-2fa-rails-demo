@@ -15,7 +15,7 @@ gem 'stimulus-rails'
 gem 'webauthn', '~> 3.4'
 
 group :development, :deploy do
-  gem "kamal", '~> 2.5'
+  gem "kamal", '~> 2.6'
 end
 
 group :development, :test do
@@ -25,7 +25,7 @@ end
 
 group :development do
   gem "rubocop", "~> 1.75"
-  gem "rubocop-rails", "~> 2.31"
+  gem "rubocop-rails", "~> 2.32"
   gem 'web-console', '>= 3.3.0'
 end
 
