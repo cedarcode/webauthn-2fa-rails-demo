@@ -128,7 +128,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.12.0)
+    json (2.12.2)
     jwt (2.10.1)
       base64
     kamal (2.6.1)
@@ -243,7 +243,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.4.1)
     rollbar (3.6.2)
-    rubocop (1.75.6)
+    rubocop (1.75.7)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -276,7 +276,7 @@ GEM
       sprockets-rails
       tilt
     securerandom (0.4.1)
-    selenium-webdriver (4.32.0)
+    selenium-webdriver (4.33.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
