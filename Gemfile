@@ -24,7 +24,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "rubocop", "~> 1.75"
+  gem "rubocop", "~> 1.76"
   gem "rubocop-rails", "~> 2.32"
   gem 'web-console', '>= 3.3.0'
 end
