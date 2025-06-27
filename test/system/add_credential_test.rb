@@ -13,6 +13,8 @@ class AddCredentialTest < ApplicationSystemTestCase
 
     visit root_url
 
+    assert_text "Sign in"
+
     fill_in "Username", with: "me"
     fill_in "Password", with: "password"
 
@@ -21,6 +23,8 @@ class AddCredentialTest < ApplicationSystemTestCase
     assert_text "Please enable Two-Factor Authentication in the button below:"
 
     visit new_webauthn_credential_path
+
+    assert_text "Add a security key"
 
     fake_credentials = fake_client.create(challenge: challenge)
     stub_create(fake_credentials)
