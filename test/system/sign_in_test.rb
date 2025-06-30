@@ -11,8 +11,8 @@ class SignInTest < ApplicationSystemTestCase
 
     assert_text "Sign in"
 
-    fill_in "Username", with: "me"
-    fill_in "Password", with: "password"
+    fill_in "username", with: "me"
+    fill_in "password", with: "password"
 
     click_on "Sign In"
 
@@ -24,8 +24,8 @@ class SignInTest < ApplicationSystemTestCase
 
     assert_text "Sign in"
 
-    fill_in "Username", with: "other"
-    fill_in "Password", with: "password"
+    fill_in "username", with: "other"
+    fill_in "password", with: "password"
 
     click_on "Sign In"
 
@@ -37,8 +37,8 @@ class SignInTest < ApplicationSystemTestCase
 
     assert_text "Sign in"
 
-    fill_in "Username", with: "me"
-    fill_in "Password", with: "wrong-password"
+    fill_in "username", with: "me"
+    fill_in "password", with: "wrong-password"
 
     click_on "Sign In"
 
@@ -59,8 +59,8 @@ class SignInTest < ApplicationSystemTestCase
 
     assert_text "Sign in"
 
-    fill_in "Username", with: "other"
-    fill_in "Password", with: "password"
+    fill_in "username", with: "other"
+    fill_in "password", with: "password"
 
     click_on "Sign In"
     assert_button "Use Security Key"
