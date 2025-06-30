@@ -4,6 +4,8 @@ class UsersTest < ApplicationSystemTestCase
   test "signing up" do
     visit new_user_url
 
+    assert_text "Create your account"
+
     fill_in "Username", with: "me"
     fill_in "Password", with: "password"
     fill_in "Password confirmation", with: "password"
@@ -17,6 +19,8 @@ class UsersTest < ApplicationSystemTestCase
 
   test "signing up fails with wrong confirmation" do
     visit new_user_url
+
+    assert_text "Create your account"
 
     fill_in "Username", with: "me"
     fill_in "Password", with: "password"

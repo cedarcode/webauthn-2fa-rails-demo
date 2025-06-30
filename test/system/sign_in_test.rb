@@ -9,6 +9,8 @@ class SignInTest < ApplicationSystemTestCase
   test "signing in" do
     visit root_url
 
+    assert_text "Sign in"
+
     fill_in "Username", with: "me"
     fill_in "Password", with: "password"
 
@@ -20,6 +22,8 @@ class SignInTest < ApplicationSystemTestCase
   test "signing in fails with wrong username" do
     visit root_url
 
+    assert_text "Sign in"
+
     fill_in "Username", with: "other"
     fill_in "Password", with: "password"
 
@@ -30,6 +34,8 @@ class SignInTest < ApplicationSystemTestCase
 
   test "signing in fails with wrong password" do
     visit root_url
+
+    assert_text "Sign in"
 
     fill_in "Username", with: "me"
     fill_in "Password", with: "wrong-password"
@@ -50,6 +56,8 @@ class SignInTest < ApplicationSystemTestCase
                                 webauthn_credential: webauthn_credential)
 
     visit new_session_path
+
+    assert_text "Sign in"
 
     fill_in "Username", with: "other"
     fill_in "Password", with: "password"
