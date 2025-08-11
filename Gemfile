@@ -5,7 +5,7 @@ gem 'rails', '~> 8.0.2'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'importmap-rails'
-gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.14'
 gem 'puma', '~> 6.6'
 gem 'rollbar', '~> 3.6'
 gem 'sassc-rails', '~> 2.0'
@@ -25,7 +25,7 @@ end
 
 group :development do
   gem "rubocop", "~> 1.79"
-  gem "rubocop-rails", "~> 2.32"
+  gem "rubocop-rails", "~> 2.33"
   gem 'web-console', '>= 3.3.0'
 end
 
