@@ -9,43 +9,56 @@ function getCSRFToken() {
   }
 }
 
-function callback(url, body) {
-  fetch(url, {
-    method: "POST",
-    body: JSON.stringify(body),
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
-      "X-CSRF-Token": getCSRFToken()
-    },
-    credentials: 'same-origin'
-  }).then(function(response) {
+async function create(callbackUrl, credentialOptions) {
+  try {
+    const credential = await WebAuthnJSON.create({ "publicKey": credentialOptions });
+    const response = await fetch(callbackUrl, {
+      method: "POST",
+      body: JSON.stringify(credential),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-CSRF-Token": getCSRFToken()
+      },
+      credentials: 'same-origin'
+    });
     if (response.ok) {
-      window.location.replace("/")
+      window.location.replace("/");
     } else if (response.status < 500) {
       response.text().then(console.log);
     } else {
       console.log("Sorry, something wrong happened.");
     }
-  });
-}
-
-function create(callbackUrl, credentialOptions) {
-  WebAuthnJSON.create({ "publicKey": credentialOptions }).then(function(credential) {
-    callback(callbackUrl, credential);
-  }).catch(function(error) {
+  } catch(error) {
     console.log(error);
-  });
+  };
 
   console.log("Creating new public key credential...");
 }
 
-function get(credentialOptions) {
-  WebAuthnJSON.get({ "publicKey": credentialOptions }).then(function(credential) {
-    callback("/webauthn_credential_authentication", credential);
-  }).catch(function(error) {
+async function get(credentialOptions) {
+  try {
+    const credential = await WebAuthnJSON.get({ "publicKey": credentialOptions });
+    const response = await fetch("/webauthn_credential_authentication", {
+      method: "POST",
+      body: JSON.stringify(credential),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-CSRF-Token": getCSRFToken()
+      },
+      credentials: 'same-origin'
+    });
+    if (response.ok) {
+      window.location.replace("/");
+    } else if (response.status < 500) {
+      response.text().then(console.log);
+    } else {
+      console.log("Sorry, something wrong happened.");
+    }
+  } catch(error) {
     console.log(error);
-  });
+  };
 
   console.log("Getting public key credential...");
 }
