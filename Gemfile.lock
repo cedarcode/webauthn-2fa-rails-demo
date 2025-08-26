@@ -245,7 +245,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.4.1)
     rollbar (3.6.2)
-    rubocop (1.79.2)
+    rubocop (1.80.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -355,7 +355,7 @@ DEPENDENCIES
   puma (~> 6.6)
   rails (~> 8.0.2)
   rollbar (~> 3.6)
-  rubocop (~> 1.79)
+  rubocop (~> 1.80)
   rubocop-rails (~> 2.33)
   sassc-rails (~> 2.0)
   selenium-webdriver
