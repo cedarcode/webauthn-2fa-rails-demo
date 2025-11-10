@@ -7,7 +7,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'importmap-rails'
 gem 'jbuilder', '~> 2.14'
 gem 'puma', '~> 7.1'
-gem 'rollbar', '~> 3.6'
+gem 'rollbar', '~> 3.7'
 gem 'sassc-rails', '~> 2.0'
 gem 'sprockets-rails', '~> 3.5'
 gem 'sqlite3', '>= 1.4'
