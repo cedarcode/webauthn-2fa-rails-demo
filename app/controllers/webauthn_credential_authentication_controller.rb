@@ -6,7 +6,10 @@ class WebauthnCredentialAuthenticationController < ApplicationController
   end
 
   def options
-    get_options = WebAuthn::Credential.options_for_get(allow: user.webauthn_credentials.pluck(:external_id))
+    get_options = WebAuthn::Credential.options_for_get(
+      allow: user.webauthn_credentials.pluck(:external_id),
+      user_verification: "discouraged"
+    )
 
     session[:current_challenge] = get_options.challenge
 

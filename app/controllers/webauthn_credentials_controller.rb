@@ -14,7 +14,10 @@ class WebauthnCredentialsController < ApplicationController
         id: current_user.webauthn_id,
         name: current_user.username
       },
-      exclude: current_user.webauthn_credentials.pluck(:external_id)
+      exclude: current_user.webauthn_credentials.pluck(:external_id),
+      authenticator_selection: {
+        user_verification: "discouraged"
+      }
     )
 
     session[:current_challenge] = create_options.challenge
