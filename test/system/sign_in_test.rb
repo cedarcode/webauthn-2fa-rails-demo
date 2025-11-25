@@ -3,7 +3,7 @@ require "webauthn/fake_client"
 
 class SignInTest < ApplicationSystemTestCase
   setup do
-    User.create!(username: "me", password: "password", password_confirmation: "password")
+    User.create!(username: "me", password: "S3cr3tP@ssw0rd!", password_confirmation: "S3cr3tP@ssw0rd!")
   end
 
   test "signing in" do
@@ -12,7 +12,7 @@ class SignInTest < ApplicationSystemTestCase
     assert_text "Sign in"
 
     fill_in "Username", with: "me"
-    fill_in "Password", with: "password"
+    fill_in "Password", with: "S3cr3tP@ssw0rd!"
 
     click_on "Sign In"
 
@@ -52,7 +52,7 @@ class SignInTest < ApplicationSystemTestCase
     public_key_credential = fake_client.create(challenge: challenge)
     webauthn_credential = WebAuthn::Credential.from_create(public_key_credential)
     create_user_with_credential(username: "other",
-                                password: "password",
+                                password: "S3cr3tP@ssw0rd!",
                                 webauthn_credential: webauthn_credential)
 
     visit new_session_path
@@ -60,7 +60,7 @@ class SignInTest < ApplicationSystemTestCase
     assert_text "Sign in"
 
     fill_in "Username", with: "other"
-    fill_in "Password", with: "password"
+    fill_in "Password", with: "S3cr3tP@ssw0rd!"
 
     click_on "Sign In"
     assert_button "Use Security Key"
