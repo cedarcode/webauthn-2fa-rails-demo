@@ -3,7 +3,7 @@ require "webauthn/fake_client"
 
 class AddCredentialTest < ApplicationSystemTestCase
   setup do
-    User.create!(username: "me", password: "password", password_confirmation: "password")
+    User.create!(username: "me", password: "S3cr3tP@ssw0rd!", password_confirmation: "S3cr3tP@ssw0rd!")
   end
 
   test "adding a credential" do
@@ -16,7 +16,7 @@ class AddCredentialTest < ApplicationSystemTestCase
     assert_text "Sign in"
 
     fill_in "Username", with: "me"
-    fill_in "Password", with: "password"
+    fill_in "Password", with: "S3cr3tP@ssw0rd!"
 
     click_on "Sign In"
 
