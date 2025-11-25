@@ -1,9 +1,19 @@
 require "application_system_test_case"
-require "webauthn/fake_client"
 
 class SignInTest < ApplicationSystemTestCase
   setup do
-    User.create!(username: "me", password: "S3cr3tP@ssw0rd!", password_confirmation: "S3cr3tP@ssw0rd!")
+    @user = User.create!(
+      username: "me",
+      password: "S3cr3tP@ssw0rd!",
+      password_confirmation: "S3cr3tP@ssw0rd!",
+      webauthn_id: WebAuthn.configuration.encoder.encode(SecureRandom.random_bytes(64))
+    )
+
+    @authenticator = add_virtual_authenticator
+  end
+
+  def teardown
+    @authenticator.remove!
   end
 
   test "signing in" do
@@ -46,33 +56,21 @@ class SignInTest < ApplicationSystemTestCase
   end
 
   test 'sign in with 2FA enabled' do
-    raw_challenge = SecureRandom.random_bytes(32)
-    challenge = WebAuthn.configuration.encoder.encode(raw_challenge)
-    fake_client = WebAuthn::FakeClient.new(ENV['WEBAUTHN_ORIGIN'])
-    public_key_credential = fake_client.create(challenge: challenge)
-    webauthn_credential = WebAuthn::Credential.from_create(public_key_credential)
-    create_user_with_credential(username: "other",
-                                password: "S3cr3tP@ssw0rd!",
-                                webauthn_credential: webauthn_credential)
+    add_credential_to_authenticator(@authenticator, @user, nickname: 'USB Key')
 
     visit new_session_path
 
     assert_text "Sign in"
 
-    fill_in "Username", with: "other"
+    fill_in "Username", with: "me"
     fill_in "Password", with: "S3cr3tP@ssw0rd!"
 
     click_on "Sign In"
     assert_button "Use Security Key"
 
-    fake_assertion = fake_client.get(challenge: challenge)
-    stub_get(fake_assertion)
+    click_on "Use Security Key"
 
-    WebAuthn::PublicKeyCredential::RequestOptions.stub_any_instance :raw_challenge, raw_challenge do
-      click_on "Use Security Key"
-
-      assert_text "Your Security Keys:"
-      assert_text 'USB Key'
-    end
+    assert_text "Your Security Keys:"
+    assert_text 'USB Key'
   end
 end
