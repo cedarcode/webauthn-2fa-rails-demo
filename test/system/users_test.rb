@@ -7,8 +7,8 @@ class UsersTest < ApplicationSystemTestCase
     assert_text "Create your account"
 
     fill_in "Username", with: "me"
-    fill_in "Password", with: "password"
-    fill_in "Password confirmation", with: "password"
+    fill_in "Password", with: "S3cr3tP@ssw0rd!"
+    fill_in "Password confirmation", with: "S3cr3tP@ssw0rd!"
 
     assert_difference("User.count", 1) do
       click_on "Sign Up"
