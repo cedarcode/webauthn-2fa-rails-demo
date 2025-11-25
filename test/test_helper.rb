@@ -41,53 +41,38 @@ class ActiveSupport::TestCase
     )
   end
 
-  def stub_create(fake_credentials)
-    # Decode base64url encoded JSON data
-    decode(fake_credentials["response"], "clientDataJSON")
+  def add_virtual_authenticator
+    options = ::Selenium::WebDriver::VirtualAuthenticatorOptions.new
 
-    # Parse to avoid escaping already escaped characters
-    fake_credentials["response"]["clientDataJSON"] = JSON.parse(fake_credentials["response"]["clientDataJSON"])
-
-    fake_credentials = fake_credentials.to_json
-    script =
-      "var base64urlDecode = encodedData => atob(encodedData.replace(/_/g, '/').replace(/-/g, '+'));
-       var toUint8Array = (data) => { return Uint8Array.from(data, c => c.charCodeAt(0)) };
-       var credential = JSON.parse('" + fake_credentials + "');
-       credential['rawId'] = toUint8Array(base64urlDecode(credential['rawId']));
-       credential['response']['attestationObject'] =
-         toUint8Array(base64urlDecode(credential['response']['attestationObject']));
-       credential['response']['clientDataJSON'] =
-         toUint8Array(JSON.stringify(credential['response']['clientDataJSON']));
-       credential['getClientExtensionResults'] = () => ({});
-       var stub = window.sinon.stub(navigator.credentials, 'create').resolves(credential);"
-    page.execute_script(script)
+    page.driver.browser.add_virtual_authenticator(options)
   end
 
-  def stub_get(fake_assertion)
-    # Decode base64url encoded JSON data
-    decode(fake_assertion["response"], "clientDataJSON")
+  def add_credential_to_authenticator(authenticator, user, nickname: 'My Credential')
+    credential_id = SecureRandom.random_bytes(16)
+    encoded_credential_id = Base64.urlsafe_encode64(credential_id)
+    key = OpenSSL::PKey.generate_key("ED25519")
+    encoded_private_key = Base64.urlsafe_encode64(key.private_to_der)
 
-    # Parse to avoid escaping already escaped characters
-    fake_assertion["response"]["clientDataJSON"] = JSON.parse(fake_assertion["response"]["clientDataJSON"])
+    cose_public_key = COSE::Key::OKP.from_pkey(OpenSSL::PKey.read(key.public_to_der))
+    cose_public_key.alg = -8
+    encoded_cose_public_key = Base64.urlsafe_encode64(cose_public_key.serialize)
 
-    fake_assertion = fake_assertion.to_json
-    script =
-      "var base64urlDecode = encodedData => atob(encodedData.replace(/_/g, '/').replace(/-/g, '+'));
-       var toUint8Array = (data) => { return Uint8Array.from(data, c => c.charCodeAt(0)) };
-       var assertion = JSON.parse('" + fake_assertion + "');
-       assertion['rawId'] = toUint8Array(base64urlDecode(assertion['rawId']));
-       assertion['response']['authenticatorData'] =
-        toUint8Array(base64urlDecode(assertion['response']['authenticatorData']));
-       assertion['response']['clientDataJSON'] =
-        toUint8Array(JSON.stringify(assertion['response']['clientDataJSON']));
-       assertion['response']['signature'] =
-        toUint8Array(base64urlDecode(assertion['response']['signature']));
-       assertion['getClientExtensionResults'] = () => ({});
-       var stub = window.sinon.stub(navigator.credentials, 'get').resolves(assertion);"
-    page.execute_script(script)
-  end
+    credential_json = {
+      "credentialId" => encoded_credential_id,
+      "isResidentCredential" => false,
+      "rpId" => "localhost",
+      "privateKey" => encoded_private_key,
+      "signCount" => 0,
+      "userHandle" => user.webauthn_id
+    }
 
-  def decode(hash, key)
-    hash[key] = Base64.decode64(hash[key])
+    authenticator.add_credential(credential_json)
+
+    user.webauthn_credentials.create!(
+      nickname: nickname,
+      external_id: Base64.urlsafe_encode64(credential_id, padding: false),
+      public_key: encoded_cose_public_key,
+      sign_count: 0,
+    )
   end
 end

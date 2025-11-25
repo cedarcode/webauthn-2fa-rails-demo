@@ -1,16 +1,17 @@
 require "application_system_test_case"
-require "webauthn/fake_client"
 
 class AddCredentialTest < ApplicationSystemTestCase
   setup do
     User.create!(username: "me", password: "S3cr3tP@ssw0rd!", password_confirmation: "S3cr3tP@ssw0rd!")
+
+    @authenticator = add_virtual_authenticator
+  end
+
+  def teardown
+    @authenticator.remove!
   end
 
   test "adding a credential" do
-    raw_challenge = SecureRandom.random_bytes(32)
-    challenge = WebAuthn.configuration.encoder.encode(raw_challenge)
-    fake_client = WebAuthn::FakeClient.new(ENV['WEBAUTHN_ORIGIN'])
-
     visit root_url
 
     assert_text "Sign in"
@@ -26,16 +27,11 @@ class AddCredentialTest < ApplicationSystemTestCase
 
     assert_text "Add a security key"
 
-    fake_credentials = fake_client.create(challenge: challenge)
-    stub_create(fake_credentials)
-
     fill_in "webauthn_credential_nickname", with: "USB Key"
 
-    WebAuthn::PublicKeyCredential::CreationOptions.stub_any_instance :raw_challenge, raw_challenge do
-      click_on "Add Security Key"
+    click_on "Add Security Key"
 
-      assert_text "Your Security Keys:"
-      assert_text 'USB Key'
-    end
+    assert_text "Your Security Keys:"
+    assert_text 'USB Key'
   end
 end
