@@ -16,6 +16,7 @@ class WebauthnCredentialsController < ApplicationController
       },
       exclude: current_user.webauthn_credentials.pluck(:external_id),
       authenticator_selection: {
+        resident_key: "discouraged",
         user_verification: "discouraged"
       }
     )
