@@ -9,7 +9,5 @@ pin "credential"
 
 pin "@rails/ujs", to: "@rails--ujs.js" # @6.0.2
 
-pin "@github/webauthn-json", to: "@github--webauthn-json.js" # @2.1.1
-
 pin "@material/menu", to: "@material--menu.js" # @4.0.0
 pin "@material/textfield", to: "@material--textfield.js" # @4.0.0

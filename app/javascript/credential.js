@@ -1,5 +1,3 @@
-import * as WebAuthnJSON from "@github/webauthn-json"
-
 function getCSRFToken() {
   var CSRFSelector = document.querySelector('meta[name="csrf-token"]')
   if (CSRFSelector) {
@@ -30,8 +28,10 @@ function callback(url, body) {
   });
 }
 
-function create(callbackUrl, credentialOptions) {
-  WebAuthnJSON.create({ "publicKey": credentialOptions }).then(function(credential) {
+function create(callbackUrl, data) {
+  const credentialOptions = PublicKeyCredential.parseCreationOptionsFromJSON(data);
+
+  navigator.credentials.create({ "publicKey": credentialOptions }).then(function(credential) {
     callback(callbackUrl, credential);
   }).catch(function(error) {
     console.log(error);
@@ -40,8 +40,10 @@ function create(callbackUrl, credentialOptions) {
   console.log("Creating new public key credential...");
 }
 
-function get(credentialOptions) {
-  WebAuthnJSON.get({ "publicKey": credentialOptions }).then(function(credential) {
+function get(data) {
+  const credentialOptions = PublicKeyCredential.parseRequestOptionsFromJSON(data);
+
+  navigator.credentials.get({ "publicKey": credentialOptions }).then(function(credential) {
     callback("/webauthn_credential_authentication", credential);
   }).catch(function(error) {
     console.log(error);
