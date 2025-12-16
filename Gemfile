@@ -15,7 +15,7 @@ gem 'stimulus-rails'
 gem 'webauthn', '~> 3.4'
 
 group :development, :deploy do
-  gem "kamal", '~> 2.9'
+  gem "kamal", '~> 2.10'
 end
 
 group :development, :test do
