@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 8.1.1'
 
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.21'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'importmap-rails'
 gem 'jbuilder', '~> 2.14'
