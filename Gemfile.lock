@@ -85,10 +85,11 @@ GEM
     bigdecimal (4.0.1)
     bindata (2.5.1)
     bindex (0.8.1)
-    bootsnap (1.20.1)
+    bootsnap (1.21.1)
       msgpack (~> 1.2)
     builder (3.3.0)
-    byebug (12.0.0)
+    byebug (13.0.0)
+      reline (>= 0.6.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -199,7 +200,7 @@ GEM
       date
       stringio
     public_suffix (6.0.1)
-    puma (7.1.0)
+    puma (7.2.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.4)
@@ -284,7 +285,7 @@ GEM
       sprockets-rails
       tilt
     securerandom (0.4.1)
-    selenium-webdriver (4.39.0)
+    selenium-webdriver (4.40.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -359,7 +360,7 @@ DEPENDENCIES
   jbuilder (~> 2.14)
   kamal (~> 2.10)
   minitest-stub_any_instance (~> 1.0)
-  puma (~> 7.1)
+  puma (~> 7.2)
   rails (~> 8.1.1)
   rollbar (~> 3.7)
   rubocop (~> 1.82)
