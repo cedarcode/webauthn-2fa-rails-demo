@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 8.1.1'
 
-gem 'bcrypt', '~> 3.1.21'
+gem 'bcrypt', '~> 3.1.22'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'importmap-rails'
 gem 'jbuilder', '~> 2.14'
@@ -15,7 +15,7 @@ gem 'stimulus-rails'
 gem 'webauthn', '~> 3.4'
 
 group :development, :deploy do
-  gem "kamal", '~> 2.10'
+  gem "kamal", '~> 2.11'
 end
 
 group :development, :test do
@@ -24,7 +24,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "rubocop", "~> 1.85"
+  gem "rubocop", "~> 1.86"
   gem "rubocop-rails", "~> 2.34"
   gem 'web-console', '>= 3.3.0'
 end
