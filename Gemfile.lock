@@ -85,7 +85,7 @@ GEM
     bigdecimal (4.1.2)
     bindata (2.5.1)
     bindex (0.8.1)
-    bootsnap (1.24.5)
+    bootsnap (1.24.6)
       msgpack (~> 1.2)
     builder (3.3.0)
     byebug (13.0.0)
@@ -133,7 +133,7 @@ GEM
     jbuilder (2.15.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
-    json (2.19.7)
+    json (2.19.8)
     jwt (3.1.2)
       base64
     kamal (2.11.0)
@@ -167,7 +167,7 @@ GEM
       drb (~> 2.0)
       prism (~> 1.5)
     minitest-stub_any_instance (1.0.3)
-    msgpack (1.8.0)
+    msgpack (1.8.1)
     net-imap (0.5.12)
       date
       net-protocol
@@ -268,7 +268,7 @@ GEM
     rubocop-ast (1.49.1)
       parser (>= 3.3.7.2)
       prism (~> 1.7)
-    rubocop-rails (2.35.3)
+    rubocop-rails (2.35.4)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -300,7 +300,7 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    sqlite3 (2.9.4)
+    sqlite3 (2.9.5)
       mini_portile2 (~> 2.8.0)
     sshkit (1.25.0)
       base64
