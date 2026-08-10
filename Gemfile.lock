@@ -133,7 +133,7 @@ GEM
     jbuilder (2.15.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
-    json (2.21.1)
+    json (2.21.2)
     jwt (3.1.2)
       base64
     kamal (2.12.0)
@@ -191,7 +191,7 @@ GEM
       openssl (> 2.0)
     ostruct (0.6.3)
     parallel (2.1.0)
-    parser (3.3.11.1)
+    parser (3.3.12.0)
       ast (~> 2.4.1)
       racc
     pp (0.6.3)
@@ -254,7 +254,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.4.4)
     rollbar (3.8.0)
-    rubocop (1.88.2)
+    rubocop (1.89.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -364,7 +364,7 @@ DEPENDENCIES
   puma (~> 8.0)
   rails (~> 8.1.1)
   rollbar (~> 3.8)
-  rubocop (~> 1.88)
+  rubocop (~> 1.89)
   rubocop-rails (~> 2.36)
   sassc-rails (~> 2.0)
   selenium-webdriver
