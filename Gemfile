@@ -13,7 +13,7 @@ gem 'sassc-rails', '~> 2.0'
 gem 'sprockets-rails', '~> 3.5'
 gem 'sqlite3', '>= 1.4'
 gem 'stimulus-rails'
-gem 'webauthn', '~> 3.4'
+gem 'webauthn', '~> 3.5'
 
 group :development, :deploy do
   gem "kamal", '~> 2.12'
