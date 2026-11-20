@@ -7,7 +7,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'importmap-rails'
 gem 'jbuilder', '~> 2.15'
 gem 'json', '< 3' # https://github.com/rails/rails/issues/58685
-gem 'puma', '~> 8.0'
+gem 'puma', '~> 8.1'
 gem 'rollbar', '~> 3.8'
 gem 'sassc-rails', '~> 2.0'
 gem 'sprockets-rails', '~> 3.5'
